@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: radial-gradient(circle at top left, #ffe6f0, #fff0f5);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+.decoracion-flotante {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background-size: cover;
+  animation: flotar 6s linear infinite;
+  opacity: 0.9;
+  z-index: 0;
+}
+.decoracion-flotante.heart {
+  background-image: url('https://emoji.gg/assets/emoji/8414-hearts.gif');
+}
+.decoracion-flotante.star {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Full_Star_Yellow.svg/1024px-Full_Star_Yellow.svg.png');
+}
+.decoracion-flotante.flower {
+  background-image: url('https://emojicdn.elk.sh/%F0%9F%8C%B8');
+}
+@keyframes flotar {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(-100vh) scale(1.7); opacity: 0; }
+}
+.sobre-contenedor {
+  position: relative;
+  z-index: 2;
+  width: 240px;
+  height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  animation: latido 2s infinite;
+}
+.sobre {
+  width: 100%;
+  height: 100%;
+  background-image: url('https://png.pngtree.com/png-clipart/20230202/ourmid/pngtree-simple-love-envelopes-png-image_6583208.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px;
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  z-index: 1;
+}
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+.boton-abrir {
+  background: linear-gradient(45deg, #ff5c8a, #ff9aa2);
+  border: none;
+  color: white;
+  font-size: 1.4rem;
+  padding: 14px 26px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 0 20px #ff69b4;
+  transition: background 0.3s ease;
+  z-index: 3;
+  position: relative;
+}
+.boton-abrir:hover {
+  background: linear-gradient(45deg, #ff9aa2, #ffc0cb);
+}
+.boton-abrir:active {
+  transform: scale(0.98);
+}
+.carta {
+  display: none;
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  height: 90%;
+  background: linear-gradient(180deg, #fffafc, #ffeef8);
+  border-radius: 30px;
+  padding: 35px 25px;
+  overflow-y: auto;
+  box-shadow: 0 0 60px rgba(255, 105, 180, 0.5);
+  z-index: 5;
+  animation: aparecer 1s ease;
+  color: #333;
+  border: 5px double #ffb6c1;
+  backdrop-filter: blur(6px);
+}
+.carta.visible {
+  display: block;
+}
+.carta p {
+  margin-bottom: 1.2em;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  text-align: justify;
+}
+@keyframes aparecer {
+  from {opacity: 0; transform: translate(-50%, -20%);}
+  to {opacity: 1; transform: translate(-50%, 0);}
+}
