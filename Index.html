@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Te amo</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+  <div class="sobre-contenedor">
+    <div class="sobre" id="sobre"></div>
+    <button class="boton-abrir" id="btnAbrir">❤ Abrir</button>
+  </div>
+
+  <div class="carta" id="carta">
+    <p>Estoy feliz de que estés en mi vida, aunque estemos lejos, aunque no pueda abrazarte cada vez que quiero, aunque no pueda tenerte frente a mí todos los días… aún así, eres una de las mejores cosas que me han pasado. Te has convertido en alguien muy importante para mí, alguien que llegó para quedarse, para darme razones de sonreír incluso a la distancia. Te has vuelto mi felicidad, mi lugar seguro, mi pensamiento bonito cada día.</p>
+    <p>Me has sacado sonrisas que nadie más pudo sacarme, me has hecho sentir cosas que no sabía que se podían sentir a través de una pantalla, con palabras, con mensajes, con llamadas. Y aunque a veces duela no poder tenerte cerca, eso no cambia lo mucho que significas para mí.</p>
+    <p>Eres, y sé que serás, alguien muy especial para mí. Me hace demasiado feliz dormir con un “buenas noches” tuyo, sabiendo que piensas en mí antes de cerrar los ojos, y despertar con un “buenos días” tuyo que me hace sentir acompañado aunque estemos a kilómetros.</p>
+    <p>No espero el día solo por rutina, lo espero por ti. Porque aunque no pueda verte en persona, espero poder hablar contigo, escucharte, saber cómo estás. Y sueño con el día en que pueda verte frente a frente, abrazarte fuerte, tomarte de la mano, mirarte a los ojos sin una pantalla de por medio, y decirte todo esto en voz alta. Poder besarte y decirte cuánto te amo, cuánto te aprecio, lo linda que eres en todo sentido: por fuera, por dentro, por cada parte de ti.</p>
+    <p>Tienes algo que no cualquiera tiene. No solo me encantas físicamente, también me enamora tu forma de ser, lo que piensas, lo que sientes, lo que eres. Todo en ti me transmite ternura, calma, cariño. Me das una paz que no se explica, me das ganas de luchar por este amor, por este “nosotros” que tenemos, aunque haya distancia.</p>
+    <p>Eres demasiado tierna, demasiado linda, demasiado tú, y eso me encanta. Te amo mucho, mi amor. Nunca lo olvides. Porque yo tampoco voy a olvidar lo mucho que te amo, y aunque ahora estemos lejos, sé que un día vamos a estar juntos, y todo esto habrá valido la pena. Porque tú vales la pena.</p>
+  </div>
+
+  <script>
+    const sobre = document.getElementById("sobre");
+    const carta = document.getElementById("carta");
+    const btnAbrir = document.getElementById("btnAbrir");
+    let contador = 0;
+
+    btnAbrir.addEventListener("click", () => {
+      contador++;
+      let scale = 1 + contador * 0.05;
+      sobre.style.transform = `scale(${scale})`;
+      sobre.style.boxShadow = `0 0 ${10 + contador * 5}px #ff69b4`;
+
+      if (contador >= 10) {
+        carta.classList.add("visible");
+        btnAbrir.style.display = "none";
+        sobre.style.display = "none";
+
+        // Activar decoraciones flotantes
+        setInterval(() => {
+          const decoraciones = ["heart", "star", "flower"];
+          const tipo = decoraciones[Math.floor(Math.random() * decoraciones.length)];
+          const elemento = document.createElement("div");
+          elemento.className = `decoracion-flotante ${tipo}`;
+          elemento.style.left = Math.random() * 100 + "%";
+          elemento.style.zIndex = Math.random() > 0.5 ? 0 : 1;
+          document.body.appendChild(elemento);
+          setTimeout(() => elemento.remove(), 6000);
+        }, 300);
+      }
+    });
+  </script>
+</body>
+</html>
